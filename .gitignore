@@ -1,12 +1,16 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
+# Unity Git Ignore
+
 /*/[Ll]ibrary/
 /*/[Tt]emp/
 /*/[Oo]bj/
+/*/[Bb]uild/
+/*/[Bb]uilds/
 /*/[Ll]ogs/
 /*/[Uu]ser[Ss]ettings/
+
+/[Bb]uild/
+/[Bb]uilds/
+
 .vscode/
 
 # MemoryCaptures can get excessive in size.
