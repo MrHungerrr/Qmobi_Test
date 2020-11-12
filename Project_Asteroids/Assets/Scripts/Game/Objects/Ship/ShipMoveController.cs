@@ -4,7 +4,7 @@ using UnityEngine;
 using Vkimow.Unity.Tools.Single;
 using Game.Main;
 
-namespace Game.Ship
+namespace Game.Objects.Ship
 {
     class ShipMoveController : MonoBehaviour
     #region IInitialization
@@ -13,14 +13,14 @@ namespace Game.Ship
 #endif
     #endregion
     {
-        private bool _moveInput;
+        private bool _isMoving;
         private float _rotateInput;
 
-        private float _currentAngle;
+        private const float MOVE_SPEED = 1200f;
+        private const float ROTATE_SPEED = 200f;
 
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
+
 
         #region Initializatior
 #if UNITY_EDITOR
@@ -35,7 +35,7 @@ namespace Game.Ship
 
         public void Setup()
         {
-            InputManager.Instance.ShipMove += ctx => _moveInput = ctx;
+            InputManager.Instance.ShipMove += move => _isMoving = move;
             InputManager.Instance.ShipRotate += rotate => _rotateInput = rotate;
         }
 
@@ -47,10 +47,10 @@ namespace Game.Ship
 
         private void Move()
         {
-            if (_moveInput)
-            {
-                _rb.AddForce(_rb.transform.up * _moveSpeed * Time.fixedDeltaTime);
-            }
+            if (!_isMoving)
+                return;
+
+            _rb.AddForce(_rb.transform.up * MOVE_SPEED * Time.fixedDeltaTime);
         }
 
         private void Rotate()
@@ -58,8 +58,9 @@ namespace Game.Ship
             if (_rotateInput == 0)
                 return;
 
-            _currentAngle -= _rotateInput * _rotateSpeed * Time.fixedDeltaTime;
-            _rb.MoveRotation(_currentAngle);
+            float currentAngle = _rb.rotation;
+            currentAngle -= _rotateInput * ROTATE_SPEED * Time.fixedDeltaTime;
+            _rb.MoveRotation(currentAngle);
         }
     }
 }

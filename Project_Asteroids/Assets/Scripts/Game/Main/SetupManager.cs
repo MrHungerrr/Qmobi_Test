@@ -1,7 +1,9 @@
-﻿using Game.Ship;
+﻿using Assets.Scripts.Game.Objects.Asteroids;
+using Game.Objects.Ship;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Vkimow.Unity.Tools.Single;
 
 
@@ -16,8 +18,15 @@ namespace Game.Main
 
         private void Setup()
         {
-            InputManager.Instance.Setup();
+            UIManager.Instance.Setup();
+            GameManager.Instance.Setup();
             ShipController.Instance.Setup();
         }
+
+        private void Start()
+        {
+            SceneManager.LoadScene(1);
+        }
+
     }
 }
