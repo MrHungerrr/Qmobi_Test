@@ -2,11 +2,10 @@
 using Game.Objects.Asteroids;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using Vkimow.Unity.Tools.Single;
 
-namespace Assets.Scripts.Game.Objects.Asteroids
+namespace Game.Objects.Asteroids
 {
     class AsteroidManager : MonoSingleton<AsteroidManager>
     {

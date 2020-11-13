@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Game.Objects.Asteroids;
+﻿using Game.Objects.Asteroids;
 using Game.Objects.Ship;
 using System;
 using System.Collections;

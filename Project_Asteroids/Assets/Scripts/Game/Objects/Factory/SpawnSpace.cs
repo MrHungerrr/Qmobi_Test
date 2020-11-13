@@ -14,6 +14,7 @@ namespace Game.Objects
         [SerializeField] private float _spawnRadius;
         [Header("No Spawn Circle")]
         [SerializeField] private float _noSpawnRadius;
+
         public Vector2 GetRandomSpawnPosition()
         {
             float radius = Random.Range(_noSpawnRadius, _spawnRadius);
